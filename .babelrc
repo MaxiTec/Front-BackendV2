@@ -1,0 +1,12 @@
+{
+    "presets": [
+        //Para que funcioone coorrectamenla los imports de ecm6
+        ["env", { "modules": false }],
+        "react",
+        "es2015"
+    ],
+    //plugins que se utilizaran
+    "plugins": [
+        "react-hot-loader/babel", ["import", { "libraryName": "antd", "style": true }]
+    ]
+}

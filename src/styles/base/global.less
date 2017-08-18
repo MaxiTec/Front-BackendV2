@@ -1,0 +1,113 @@
+//Estilos Globales
+html{
+	height:100%;
+	position: relative;
+	overflow-x: hidden;
+}
+body{
+	position: relative;
+	height: 100%;
+	width:100%;
+	overflow-x: hidden;
+	font-family: @primaryFont;
+	background-color:@secondaryColor;
+}
+h1{
+	font-weight: bold;
+	.font-size(17);
+	// font-family: Raleway-SemiBold;
+	text-transform: uppercase;
+	color: @secondaryColor;
+	letter-spacing: 0.85px;
+}
+p{
+	.font-size(12.5);
+}
+strong{
+	font-weight: 600;
+}
+.embed-container{
+	position: relative;
+	height: 0px;
+	overflow: hidden;
+	padding-bottom: 56.25%;
+	iframe{
+	position: absolute;
+	top:0;
+	left:0;
+	width: 100%;
+	height: 100%;
+	}
+}
+.no-padding{
+	padding:0!important
+}
+.no-margin{
+	margin:0!important
+}
+.text-center{
+	text-align:center
+}
+.clearfix{
+	&::after,&::before{
+		content: '';
+		display: block;
+		clear: both;
+	}
+}
+.text-left{text-align:left;}
+.text-right{text-align:right;}
+.pull-right{float: right!important;}
+.pull-left{float: left!important;}
+.img-responsive{
+	max-width:100%;
+	height: auto;
+}
+// Herraminetas para responsividad
+.visible{
+	&-xs,&-sm,&-md,&-lg{display:none!important}
+	&-inline-xs,&-inline-sm,&-inline-md,&-inline-lg{display:none!important}
+	@media (max-width: 600px) {
+		&-xs{display:block!important;}
+		&-inline-xs{display:inline-block!important;}
+	  }
+	@media (max-width: 600px) {
+		&-sm{display:block!important;}
+		&-inline-sm{display:inline-block!important;}
+	}
+	@media (max-width: 600px) {
+		&-md{display:block!important}
+		&-inline-md{display:inline-block!important}
+		}
+	@media (max-width: 600px) {
+		&-lg{display:block!important}
+		&-inline-lg{display:inline-block!important;}
+	}
+}
+
+.hidden{
+	display:none!important;
+	@media (max-width: 600px) {
+		&-xs{display:none!important}
+	  }
+	@media (max-width: 600px) {
+		&-sm{display:none!important}
+	}
+	@media (max-width: 600px) {
+		&-md{display:none!important}
+		}
+	@media (max-width: 600px) {
+		&-lg{display:none!important}
+	}
+}
+	//@media only screen and (max-width: 767px)
+	// +between(0,3,anti-overlap:-1px)
+	//Tablets @media only screen and (min-width: 768px) and (max-width: 1023px)
+	// +from-width(4, anti-overlap:false)
+	//Small Desktops @media only screen and (min-width: 1024px)
+	// +from-width(5)
+	// 	&-md
+	// 		display:block!important
+	// 	&-inline-md
+	// 		display:inline-block!important
+	//Desktops @media only screen and (min-width: 1201px)
