@@ -1,14 +1,144 @@
 import React, { Component } from 'react'
 // import LayoutContainer from '../components/layout/Layout'
-import { Layout, Icon,Menu,Button} from 'antd';
-const { SubMenu } = Menu;
-const { Header, Content, Sider } = Layout;
-import Footer from '../components/layout/Footer'
-import SiderMenu from '../components/layout/Sider/index'
+import { Table,Icon,Button,Switch} from 'antd';
+const { Column, ColumnGroup } = Table;
+const data = [{
+  key: '1',
+  firstName: 'John',
+  lastName: 'Brown',
+  active:1,
+  age: 32,
+  address: 'New York No. 1 Lake Park',
+}, {
+  key: '2',
+  firstName: 'Jim',
+  lastName: 'Green',
+  active:1,
+  age: 42,
+  address: 'London No. 1 Lake Park',
+}, {
+  key: '3',
+  firstName: 'Aleh',
+  lastName: 'Black',
+  active:1,
+  age: 32,
+  address: 'Sidney No. 1 Lake Park',
+},
+{
+  key: '4',
+  firstName: 'Pablo',
+  lastName: 'Black',
+  active:1,
+  age: 32,
+  address: 'Sidney No. 1 Lake Park',
+},
+{
+  key: '5',
+  firstName: 'Vivi',
+  lastName: 'Black',
+  active:1,
+  age: 32,
+  address: 'Sidney No. 1 Lake Park',
+},
+{
+  key: '6',
+  firstName: 'Alan',
+  lastName: 'Black',
+  active:1,
+  age: 32,
+  address: 'Sidney No. 1 Lake Park',
+},
+{
+  key: '7',
+  firstName: 'Betaza',
+  lastName: 'Black',
+  active:1,
+  age: 32,
+  address: 'Sidney No. 1 Lake Park',
+},
+{
+  key: '8',
+  firstName: 'chamu',
+  lastName: 'Black',
+  active:0,
+  age: 32,
+  address: 'Sidney No. 1 Lake Park',
+}
+];
+function onChange(pagination, filters, sorter) {
+  console.log('params', pagination, filters, sorter);
+}
+const filterInput = () => {
+  console.log('Hola');
+}
+function onChangeSwitch(checked) {
+  console.log(`switch to ${checked}`);
+}
+
 class Home extends Component {
   render() {
     return(
-        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Natus maxime officia numquam aut necessitatibus et quidem voluptatibus iste! Consequatur ut ullam rerum. Corrupti enim rem reprehenderit, consequuntur velit quia non.</p>
+        <section className="mainContainer">
+            <div className="titleSection">
+                <h1>Listado de Hoteles</h1>
+                <a href="#" className="btn btn-default no-margin">
+                  <span className="fa ion-android-add fa-fw fa-lg"></span>
+                </a>
+            </div>
+            <div className="buscar">
+            <input type="text" id="search"/>
+            <Button onClick={filterInput}>Buscar</Button>
+            </div>
+            <Table dataSource={data} size="small" bordered={false} onChange={onChange} scroll={{ x: 500 }} pagination={false}>
+                <Column
+                  title="First Name"
+                  dataIndex="firstName"
+                  key="firstName"
+                  sorter={(a, b) => a.firstName.localeCompare(b.firstName)}
+                  filters= {
+                    [
+                      { text: 'John', value: 'John' },
+                      { text: 'Jim', value: 'Jim' },
+                    ]
+                  }
+                  onFilter={(value, record) => record.firstName.includes(value)} 
+                />
+              <Column
+                title="Age"
+                dataIndex="age"
+                key="age"
+                sorter={(a, b) => a.age - b.age}
+              />
+              <Column
+                title="Address"
+                dataIndex="address"
+                key="address"
+              />
+              <Column
+                title="Activo"
+                dataIndex="active"
+                key="active"
+                render={(text, record,index) => (
+                  <span>
+                  <Switch defaultChecked={false} onChange={onChangeSwitch} checkedChildren={<Icon type="check" />} unCheckedChildren={<Icon type="cross" />} />
+                  </span>
+                )}
+              />
+              <Column
+                title=""
+                key="action"
+                width={60}
+                fixed="right"
+                render={(text, record,index) => (
+                  <span>
+                    <a href={index} className="btn btn-default">
+                      <span className="fa lnr lnr-pencil fa-fw fa-lg"></span>
+                    </a>
+                  </span>
+                )}
+              />
+            </Table>
+        </section>
     )
   }
 }

@@ -1,5 +1,5 @@
 .btn{
-    padding: 10px 20px;
+    padding: 8px;
 	cursor: pointer;
 	text-align: center;
 	font-size: 13px;
@@ -20,5 +20,8 @@
     .btn(#fff,#ff0000,#ff0000,true,true)
 }
 .btn.btn-default{
-    .btn(#000,transparent,#000000,true,true)
+    .btn(@secondaryColor,transparent,@secondaryColor,true,true)
+}
+.btn.btn-trash{
+    .btn(#FF0000,transparent,#FF0000,true,true)
 }

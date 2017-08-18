@@ -1,0 +1,33 @@
+// .ant-menu.ant-menu-inline.ant-menu-sub{
+//     li:hover {
+//     background-color: #ffffff;
+//     .link{
+//         color: #000000;
+//     }
+//     }
+// }
+// .ant-menu-sub-menu{
+//     &-title{
+//         font-weight: 500;
+//     }
+// }
+.ant-menu{
+    background: red;
+    &-submenu-title{
+        background: green;
+        & .menu__subtitle{
+            display: flex;
+            align-items: center;
+        }
+    }
+    &-item{
+        padding-left: 30px!important;
+        a{
+            font-weight: 500;
+        }
+        &-selected{
+            background-color:red!important;
+            color:#000000;
+            }
+    }
+}
