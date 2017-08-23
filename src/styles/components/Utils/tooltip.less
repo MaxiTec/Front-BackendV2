@@ -1,0 +1,19 @@
+.tooltip{
+  position: absolute;
+  z-index: 900;
+  bottom:3px;
+  right:3px;
+  color:@primaryColor;
+  // &__content{
+  //   background: green;
+  // }
+}
+.ant-popover-inner{
+  background: @primaryColor!important;
+  color:@secondaryColor;
+}
+.ant-popover-content>.ant-popover-arrow{
+  border-bottom-color: @primaryColor!important;
+  &:after{
+  border-bottom-color: @primaryColor!important;}
+}

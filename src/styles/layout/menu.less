@@ -1,24 +1,19 @@
-.ant-menu.ant-menu-inline.ant-menu-sub{
-    li:hover {
+.layout{
+  &__sidebar{
+    background-color: #171C24;
+    @media (max-width: 768px) {
+      position: absolute;
+      top: 0;
+      left:0;
+      height: 100%;
+      width: 50%;
+      z-index: 900;
+      }
+  }
+  &__content{
     background-color: #ffffff;
-    .link{
-        color: #000000;
-    }
-    }
+    min-height: ~"calc(100vh - 154px)";
+    padding-top:0;
+    padding-bottom: 1rem;
+  }
 }
-.ant-menu-sub-menu{
-    &-title{
-        font-weight: 500;
-    }
-}
-.ant-menu-item{
-    // padding-left: 24px!important;
-    a{
-        font-weight: 500;
-    }
-    &-selected{
-        background-color:red!important;
-        color:#000000;
-        }
-}
-    

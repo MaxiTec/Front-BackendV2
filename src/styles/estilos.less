@@ -8,24 +8,3 @@
 @import "./base/global.less";
 @import "layout/**/*.less";
 @import "components/**/*.less";
-.layout{
-    background:red;
-    // max-width: 1200px;
-    &__sidebar{
-        background-color: #171C24;
-        @media (max-width: 768px) {
-            position: absolute;
-            top: 0;
-            left:0;
-            height: 100%;
-            width: 50%;
-            z-index: 100;
-          }
-    }
-    &__content{
-        background-color: #ffffff;
-        min-height: ~"calc(100vh - 154px)";
-        padding-top:1rem;
-        padding-bottom: 1rem;
-    }
-}

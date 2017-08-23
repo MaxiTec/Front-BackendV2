@@ -1,0 +1,148 @@
+.form-group{
+    margin-top: 25px;
+    // max-width: 400px;
+}
+.input{
+    position:relative;
+    &__label{
+        position: absolute;
+        width:100%;
+        height: 100%;
+        z-index: 1;
+        top:0;
+        left:0;
+        &--text{
+            display: block;
+            padding-top: 7px;
+            transition: 0.25s all ease-in;
+            color: fade(@secondaryColor,50%);
+        }
+        &.isRequired{
+            .input__label--text:before{
+                font-family: FontAwesome;
+                content: '\f069';
+                color:@primaryColor;
+                .font-size(8);
+                vertical-align:text-top;
+                padding-right:5px;
+            }
+        }
+        .graphic{
+            position: absolute;
+            top: 0;
+            left: 0;
+            fill: none;
+        }
+    }
+    &.filled{
+        .input__label{
+            top:0px;
+            .font-size(11.5);
+            &--text{
+                position:relative;
+                display: block;
+                transform: translateY(-20px);
+                color: @secondaryColor;
+                padding-top: 0px;
+            }
+        }
+        .graphic--madoka{
+            stroke-dashoffset:0;
+        }
+    }
+}
+.form-control{
+    width: 100%;
+    height: 35px;
+	border: none;
+    width: 100%;
+    background: none;
+	line-height: 35px;
+	font-size: 14px;
+	padding: 0px 10px;
+    box-sizing: border-box;
+    outline: none;
+    position: relative;
+    z-index: 100;
+    color:@secondaryColor;
+    &:focus{
+        outline: none;
+        & + .input__label{
+            top:0px;
+            .font-size(11.5);
+            .graphic--madoka{
+                stroke-dashoffset:0;
+                stroke: @primaryColor;
+            }
+            .input__label--text{
+                position:relative;
+                display: block;
+                padding-top: 0px;
+                transform: translateY(-20px);
+                color: @secondaryColor;
+            }
+        }
+        
+      }
+}
+.graphic--madoka {
+	transform: scale3d(1, -1, 1);
+	transition: stroke-dashoffset 0.5s;
+	pointer-events: none;
+	stroke: @secondaryColor;
+    stroke-width:3px;
+	stroke-dasharray: 962;
+    stroke-dashoffset: 558;
+}
+.inputFile{
+    background: red;
+    // width: 70px;
+    // height: 70px;
+    padding-bottom: 100%;
+    overflow: hidden;
+    position: relative;
+    border: 1px solid @secondaryColor;
+    border-radius: 2px;
+    &__label{
+        background: #ffffff;
+        display: block;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        z-index: 100;
+        border:0px;
+        cursor: pointer;
+        span{
+            position: absolute;
+            display: block;
+            top:50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+        }
+        &__erase{
+            z-index: -1;
+            pointer-events: none;
+        }
+    }
+    &__image{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        position: absolute;
+    }
+    &__input{
+        width: 0.1px;
+        height: 0.1px;
+        opacity: 0;
+        overflow: hidden;
+        position: absolute;
+        z-index: -1;
+    }
+    &:hover{
+        .inputFile__label__erase{
+            z-index: 900;
+            pointer-events: initial;
+            background: fade(#ffffff,70%)            
+        }
+    }
+}

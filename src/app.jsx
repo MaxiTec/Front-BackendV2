@@ -3,6 +3,6 @@ import ReactDOM from 'react-dom'
 import App from './pages'
 import './styles/estilos.less'
 ReactDOM.render(
-  <App/>,
+  <App />,
   document.getElementById('app')
 )
