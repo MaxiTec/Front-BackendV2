@@ -1,5 +1,6 @@
 .form-group{
     margin-top: 25px;
+    width: 100%;
     // max-width: 400px;
 }
 .input{
@@ -64,6 +65,7 @@
     outline: none;
     position: relative;
     z-index: 100;
+    font-weight: 400;
     color:@secondaryColor;
     &:focus{
         outline: none;
@@ -95,14 +97,15 @@
     stroke-dashoffset: 558;
 }
 .inputFile{
-    background: red;
-    // width: 70px;
-    // height: 70px;
     padding-bottom: 100%;
     overflow: hidden;
     position: relative;
     border: 1px solid @secondaryColor;
     border-radius: 2px;
+    height: 0px;
+    &__button{
+        background: green;
+    }
     &__label{
         background: #ffffff;
         display: block;
@@ -111,6 +114,8 @@
         height: 100%;
         z-index: 100;
         border:0px;
+        top:0;
+        left: 0;
         cursor: pointer;
         span{
             position: absolute;
@@ -129,6 +134,8 @@
         height: 100%;
         object-fit: cover;
         position: absolute;
+        top:0;
+        left:0;
     }
     &__input{
         width: 0.1px;

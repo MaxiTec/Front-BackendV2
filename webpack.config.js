@@ -82,43 +82,40 @@ module.exports = {
       use: 'json-loader'
     },
     { // Agregar para Entorno de produccion Autoprefixer, con POSTCSS
-        test: /\.less$/,
-        use: [{
-            loader: 'style-loader' // creates style nodes from JS strings
-        }, {
-            loader: 'css-loader' // translates CSS into CommonJS
-        }, {
+      test: /\.less$/,
+      use: [{
+        loader: 'style-loader' // creates style nodes from JS strings
+      }, {
+        loader: 'css-loader' // translates CSS into CommonJS
+      }, {
             // loader: "less-loader" // compiles Less to CSS
-            loader: 'less-loader',
-            options: {
-                paths: [
-                    path.resolve(path.join(__dirname, '/'))
-                ],
-                modifyVars: themeVariables,
-                plugins: [
-                    globLess
-                ]
-            }
-        }]
-    }
+        loader: 'less-loader',
+        options: {
+          paths: [
+            path.resolve(path.join(__dirname, '/'))
+          ],
+          modifyVars: themeVariables,
+          plugins: [
+            globLess
+          ]
+        }
+      }]
+    },
     // {
     //     test: /\.styl$/,
     //     use: useStylus
     // }
 
     // Para trabajar con CSS Puro
-    // {
-    //     test: /\.css$/,
-    //     use: [
-    //         'style-loader', //inserta el css en el html via <style>
-    //         {
-    //             loader: 'css-loader', //Retorna el css procesado via webpack
-    //             options: {
-    //                 modules: true
-    //             }
-    //         }
-    //     ]
-    // }
+    {
+      test: /\.css$/,
+      use: [
+        'style-loader', // inserta el css en el html via <style>
+        {
+          loader: 'css-loader' // Retorna el css procesado via webpack
+        }
+      ]
+    }
     ]
   },
   plugins: [
