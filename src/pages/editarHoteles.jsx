@@ -1,59 +1,37 @@
 import React, { Component } from 'react'
 import { Tabs, Select } from 'antd'
-import ReactDOM from 'react-dom'
-import {Editor, EditorState, RichUtils} from 'draft-js'
+import MyModal from '../components/Modal/MyModal'
+import MyEditor from '../components/forms/TextEditor'
 import InputForm from '../components/forms/input'
 import InputFile from '../components/forms/inputFile'
-import createToolbarsPlugin, {BoldButton, ItalicButton, UnderlineButton, LinkButton, StyleButton, ImageButton, MoreButton, H1Button, H2Button, H3Button, H4Button, H5Button, H6Button
-} from 'draft-js-toolbars/src/'
-import 'draft-js/dist/Draft.css'
+// import 'draft-js/dist/Draft.css'
 const Option = Select.Option
 const TabPane = Tabs.TabPane
-const ToolbarsPlugin = createToolbarsPlugin()
-const sideToolbarButtons = List([
-  {
-    button: MoreButton,
-    buttons: List([])
-  },
-  {
-    button: ImageButton
-  },
-  {
-    button: StyleButton,
-    buttons: List([
-      {button: H1Button},
-      {button: H2Button},
-      {button: H3Button},
-      {button: H4Button},
-      {button: H5Button},
-      {button: H6Button}
-    ])
-  }
-])
-
-const inlineToolbarButtons = List([
-  {button: BoldButton},
-  {button: ItalicButton},
-  {button: UnderlineButton},
-  {button: LinkButton}
-])
-const { Toolbars } = ToolbarsPlugin
 function handleChange (value) {
   console.log(`selected ${value}`)
 }
 class EditarHotel extends Component {
   constructor (props) {
     super(props)
-    this.state = {editorState: EditorState.createEmpty()}
-    this.onChange = (editorState) => this.setState({editorState})
     console.log(props)
+    this.state = {
+      value: ''
+    }
+    this.handleSubmit = this.handleSubmit.bind(this)
+    // this.formChange = this.formChange.bind(this)
   }
-  _onBoldClick (e) {
-    e.preventDefault()
-    this.onChange(RichUtils.toggleInlineStyle(
-      this.state.editorState,
-      'BOLD'
-    ))
+  handleSubmit (event) {
+    // this.alert('A name was submitted: ' + this.state.value)
+    event.preventDefault()
+    console.log(this)
+  }
+  formChange (event) {
+    console.log(event.target.value)
+  }
+  component () {
+    return (
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam unde deleniti facilis qui officiis eveniet ad facere commodi corporis quis, harum rerum quos iusto! Aliquid nulla quia facilis sequi? Adipisci!</p>
+    )
   }
   render () {
     return (
@@ -69,7 +47,7 @@ class EditarHotel extends Component {
             <div className='tabsContainer'>
               <Tabs defaultActiveKey='1'>
                 <TabPane tab='Informacion' key='1'>
-                  <form className='form'>
+                  <form className='form' onSubmit={this.handleSubmit} onChange={this.formChange}>
                     <div className='sectionDivider'>
                       <div className='sectionDivider__text'>
                         <h2>Titulo de la seccion</h2>
@@ -95,7 +73,7 @@ class EditarHotel extends Component {
                             <InputFile type='application/pdf' />
                           </div>
                           <div className='col-xs-12 col-sm-4 col-md-6'>
-                            <div className='select'>
+                            <div className='select select__border'>
                               <label htmlFor='d' className='select__label'>Categoria</label>
                               <Select defaultValue='3' onChange={handleChange}>
                                 <Option value='1'>1 Estrella</Option>
@@ -134,10 +112,10 @@ class EditarHotel extends Component {
                       <div className='col-xs-12'>
                         <ul className='videoList'>
                           <li className='videoList__item'>
-                            <span className='videoList__item__text'>Nombre del Item</span><button className='btn btn-default no-margin'><span className='fa lnr lnr-trash fa-fw fa-lg' /></button>
+                            <span className='videoList__item__text'>Nombre del Item</span><button className='btn btn-trash no-margin'><span className='fa lnr lnr-trash fa-fw fa-lg' /></button>
                           </li>
                           <li className='videoList__item'>
-                            <span className='videoList__item__text'>Nombre del Item</span><button className='btn btn-default no-margin'><span className='fa lnr lnr-trash fa-fw fa-lg' /></button>
+                            <span className='videoList__item__text'>Nombre del Item</span><button className='btn btn-trash no-margin'><span className='fa lnr lnr-trash fa-fw fa-lg' /></button>
                           </li>
                           <li className='videoList__item'>
                             <span className='videoList__item__text'>Nombre del Item</span><button className='btn btn-trash no-margin'><span className='fa lnr lnr-trash fa-fw fa-lg' /></button>
@@ -162,13 +140,7 @@ class EditarHotel extends Component {
                     </div>
                     <div className='row'>
                       <div className='col-xs-12'>
-                        <div id='editor'>
-                          <div className='editor'>
-                            <Toolbars inlineToolbarButtons={inlineToolbarButtons} sideToolbarButtons={sideToolbarButtons} />
-                            <button onClick={this._onBoldClick.bind(this)}>Bold</button>
-                            <Editor editorState={this.state.editorState} onChange={this.onChange} />
-                          </div>
-                        </div>
+                        <MyEditor />
                       </div>
                     </div>
                     <div className='form__button'>
@@ -176,8 +148,58 @@ class EditarHotel extends Component {
                     </div>
                   </form>
                 </TabPane>
-                <TabPane tab='Facilidades' key='2'>Content of Tab Pane 2</TabPane>
-                <TabPane tab='Habitaciones' key='3'>Content of Tab Pane 3</TabPane>
+                <TabPane tab='Facilidades' key='2'>
+                  <form className='form'>
+                    <div className='sectionDivider'>
+                      <div className='sectionDivider__text'>
+                        <h2>Facilidades</h2>
+                      </div>
+                    </div>
+                    <div className='facilidades'>
+                      <div className='row bottom-xs'>
+                        <div className='col-xs-12 col-sm-6 col-md-6 col-lg-4'>
+                          <div className='facilidades__item'>
+                            <span>Nombre de la facilidad</span>
+                            <div className='checkbox'>
+                              <input type='checkbox' id='max' />
+                              <label htmlFor='max' />
+                            </div>
+                          </div>
+                        </div>
+                        <div className='col-xs-12 col-sm-6 col-md-6 col-lg-4'>
+                          <div className='facilidades__item'>
+                            <span>Nombre de la facilidad</span>
+                            <div className='checkbox'>
+                              <input type='checkbox' id='2' />
+                              <label htmlFor='2' />
+                            </div>
+                          </div>
+                        </div>
+                        <div className='col-xs-12 col-sm-6 col-md-6 col-lg-4'>
+                          <div className='facilidades__item'>
+                            <span>Nombre de la facilidad</span>
+                            <div className='checkbox'>
+                              <input type='checkbox' id='3' />
+                              <label htmlFor='3' />
+                            </div>
+                          </div>
+                        </div>
+                        <div className='col-xs-12 col-sm-6 col-md-6 col-lg-4'>
+                          <div className='facilidades__item'>
+                            <span>Nombre de la facilidad</span>
+                            <div className='checkbox'>
+                              <input type='checkbox' id='4' />
+                              <label htmlFor='4' />
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                </TabPane>
+                <TabPane tab='Habitaciones' key='3'>
+                  <MyModal component={this.component()} />
+                </TabPane>
                 <TabPane tab='Restaurantes' key='4'>Content of Tab Pane 3</TabPane>
                 <TabPane tab='Bares' key='5'>Content of Tab Pane 3</TabPane>
                 <TabPane tab='Galeria' key='6'>Content of Tab Pane 3</TabPane>

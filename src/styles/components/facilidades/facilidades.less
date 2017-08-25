@@ -1,0 +1,38 @@
+// @font-size: 14px;
+@line-height: 1.4;
+@lines-to-show: 3;
+.facilidades{
+  &__item{
+    border-bottom: 1px solid #E8E9EF;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    span{
+      position: relative;
+      line-height: @line-height;
+      max-height: @line-height*@lines-to-show;
+      text-align: justify;
+      text-overflow: ellipsis;
+      display: block;
+      margin-right: -1em;
+      padding-right: 1em;
+      overflow: hidden;
+      &:before{
+        content: '...';
+        position: absolute;
+        right: 0;
+        bottom: 0;
+      }
+      &:after{
+        content: '';
+        position: absolute;
+        right: 0;
+        width: 1em;
+        height: 1em;
+        margin-top: 0.2em;
+        background: white;
+      }
+    }
+  }
+}

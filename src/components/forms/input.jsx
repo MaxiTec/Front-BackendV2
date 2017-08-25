@@ -9,7 +9,7 @@ class InputForm extends Component {
     this.onBlur = this.onBlur.bind(this)
   }
   onChange (event) {
-    console.log(event.target.value)
+    // console.log(event.target.value)
     if (event.target.value.length >= 0) {
       this.setState({filled: Boolean(event.currentTarget.value)})
     }

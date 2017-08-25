@@ -26,7 +26,8 @@
 	margin-right: 5px;
 }
 .btn.btn-success{
-    .btn(#fff,#ff0000,#ff0000,true,true)
+	.btn(#fff,#ff0000,#ff0000,true,true);
+	
 }
 .btn.btn-default{
 	.btn(@secondaryColor,transparent,@secondaryColor,true,true);
@@ -36,5 +37,9 @@
 	}
 }
 .btn.btn-trash{
-    .btn(#FF0000,transparent,#FF0000,true,true)
+	.btn(#FF0000,transparent,#FF0000,true,true);
+	&:hover{
+		color:#fff;
+		background: #FF0000;
+	}
 }
