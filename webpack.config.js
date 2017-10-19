@@ -5,7 +5,7 @@ const fs = require('fs')
 const lessToJs = require('less-vars-to-js')
 const themeVariables = lessToJs(fs.readFileSync(path.join(__dirname, './theme.less'), 'utf8'))
     // __dirname devuelve ruta de donde estoy ejecutando mi servidor y lo une con 'build'
-const ExtractTextPlugin = require('extract-text-webpack-plugin')
+// const ExtractTextPlugin = require('extract-text-webpack-plugin')
     // const nib = require('nib')
     // const rupture = require('rupture')
 const globLess = require('less-plugin-glob')
@@ -62,6 +62,9 @@ module.exports = {
     path: endPath,
     filename: 'app.js',
     publicPath: '/' // necesario para el Hot Reload
+  },
+  externals: {
+    jquery: 'jQuery'
   },
   module: {
       // las tranformaciones ahora se dan atraves de rules
@@ -120,7 +123,7 @@ module.exports = {
   },
   plugins: [
     // activa el hot reload globalmente
-    new ExtractTextPlugin('css/estilos.css'),
+    // new ExtractTextPlugin('css/estilos.css'),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NamedModulesPlugin()
   ],

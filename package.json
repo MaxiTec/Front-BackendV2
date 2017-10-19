@@ -45,8 +45,18 @@
     "draft-js-plugins-editor": "^2.0.0-rc5",
     "draft-js-side-toolbar-plugin": "^2.0.0-rc5",
     "draft-js-toolbars": "0.0.1",
+    "jquery": "^3.2.1",
+    "lodash": "^4.17.4",
+    "prop-types": "^15.6.0",
     "react": "^15.6.1",
-    "react-dom": "^15.6.1"
+    "react-dom": "^15.6.1",
+    "react-pagify": "^2.4.0",
+    "react-redux": "^5.0.6",
+    "reactabular-table": "^8.12.0",
+    "redux": "^3.7.2",
+    "searchtabular": "^1.7.0",
+    "segmentize": "^0.4.1",
+    "sortabular": "^1.5.0"
   },
   "theme": "./theme.js"
 }

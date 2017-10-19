@@ -10,7 +10,6 @@ const text = ''
 export default class MyEditor extends Component {
   constructor (props) {
     super(props)
-    console.log(props)
     this.state = {
       editorState: createEditorStateWithText(text)
     }
@@ -20,7 +19,6 @@ export default class MyEditor extends Component {
     this.setState({
       editorState
     })
-    console.log(this.state.editorState.getCurrentContent())
   }
   render () {
     return (

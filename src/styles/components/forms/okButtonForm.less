@@ -7,7 +7,13 @@
   padding: 15px;
   text-align: center;
   transition: 1s all ease-in;
-  z-index: 600;
+  z-index: 9999;
+  opacity: 0;
+  visibility: hidden;
+  &__is{
+    visibility: visible;
+    opacity: 1;
+  }
   &__ok{
     font-weight:bold;
   }
